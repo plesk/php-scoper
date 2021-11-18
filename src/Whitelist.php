@@ -148,7 +148,9 @@ final class Whitelist implements Countable
 
     public function isExcludedNamespace(string $name): bool
     {
-        $name = strtolower(ltrim($name, '\\'));
+        if (!$name = strtolower(ltrim($name, '\\'))) {
+            return true;
+        }
 
         foreach ($this->excludedNamespaceNames as $excludedNamespaceName) {
             if ('' === $excludedNamespaceName) {

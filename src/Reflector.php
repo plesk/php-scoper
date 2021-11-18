@@ -162,6 +162,9 @@ final class Reflector
 
     public function isClassInternal(string $name): bool
     {
+        if (strpos($name, 'pm_') !== false) {
+            return true;
+        }
         return isset($this->classes[$name]);
     }
 
